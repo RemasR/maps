@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'editStyle.css', media: 'all' %>
 </head>
 <body>
+<%= yield %>
 <div class="container">
   <div class="form-container">
-    <h1>Add New Location</h1>
+    <h1>Edit Location</h1>
     <%= form_with model: @location, local: true do |form| %>
       <div>
         <%= form.label :name %>
         <%= form.text_field :name %>
       </div>
       <div>
-        <%= form.label :URL %>
+        <%= form.label :url %>
         <%= form.text_field :url %>
       </div>
       <div>
-        <%= form.submit 'Add Location' %>
+        <%= form.submit 'Update Location' %>
       </div>
     <% end %>
   </div>

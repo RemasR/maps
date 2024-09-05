@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'styles.css', media: 'all' %>
+</head>
+<body>
+<%= yield %>
+
+<div class="container">
+  <%= link_to 'Add Location', new_location_path, class: 'button' %>
+</div>
+
+<div id="listBox">
+  <button id="toggleButton" onclick="toggleContent()">Locations ↓</button>
+  <div id="toggleContent">
+    <%= form_with url: locations_action_locations_path, method: :post, local: true, id: 'locationsForm' do %>
+      <ul id="locationList">
+        <% @locations.each do |location| %>
+          <li>
+            <input type="checkbox" name="location_ids[]" value="<%= location.id %>">
+            <strong><%= location.name %></strong>
+            <a href="<%= location.address %>"><%= location.address %></a>
+          </li>
+        <% end %>
+      </ul>
+      <input type="hidden" name="action_type" id="actionType" value="">
+      <button type="button" class="button" onclick="handleAction('edit')">Edit Selected</button>
+      <button type="button" class="button" onclick="handleAction('delete')">Delete Selected</button>
+    <% end %>
+  </div>
+</div>
+<script>
+    function toggleContent() {
+        const content = document.getElementById('toggleContent');
+        content.style.display = content.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function handleAction(action) {
+        const form = document.getElementById('locationsForm');
+        const checkboxes = form.querySelectorAll('input[name="location_ids[]"]:checked');
+
+        if (checkboxes.length === 0) {
+            alert('Please select at least one location.');
+            return;
+        }
+
+        if (action === 'edit') {
+            const selectedIds = Array.from(checkboxes).map(cb => cb.value);
+            const firstId = selectedIds[0];
+            window.location.href = `/locations/${firstId}/edit`;
+        }
+    }
+
+</script>
+</body>
+</html>

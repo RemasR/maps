@@ -112,7 +112,9 @@ strong {
     font-size: 18px;
     margin-bottom: 5px;
 }
-
+#toggleContent {
+    display: block;
+}
 a {
     color: #007bff;
     text-decoration: none;
@@ -122,6 +124,21 @@ a:hover {
     text-decoration: underline;
 }
 
-.highlight {
-    background-color:#a9a0a0;
+#infoDisplay {
+    margin: 40px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 1000px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.infoItem {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

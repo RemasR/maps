@@ -1,6 +1,9 @@
-<% if user_signed_in? %>
-  <div> Welcome <%= current_user.email %> </div>
-  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= button_to "Sign in", new_user_session_path %>
-<% end %>
+<div class="button-container">
+  <% if user_signed_in? %>
+    <div class="welcome-message">Welcome, <%= current_user.email %>!</div>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "sign-in-out-btn sign-out-btn" %>
+  <% else %>
+    <div class="welcome-message">Welcome! Please sign in to continue.</div>
+    <%= button_to "Sign in", new_user_session_path, class: "sign-in-out-btn sign-in-btn" %>
+  <% end %>
+</div>

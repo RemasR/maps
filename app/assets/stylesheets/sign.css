@@ -1,0 +1,103 @@
+/* Form container and header styling */
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+.form-header {
+    font-size: 24px;
+    color: #24292E;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form fields styling */
+.field {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 16px;
+    color: #24292E;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Remember me styling */
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input {
+    margin-right: 8px;
+}
+
+/* Button styling */
+.sign-in-out-btn {
+    background-color: #FAFBFC;
+    color: #24292E;
+    padding: 12px 24px;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s, transform 0.3s;
+    text-align: center;
+    margin: 10px;
+    display: inline-block;
+    width: auto; /* Allow width to be determined by content */
+}
+
+.sign-in-out-btn:hover {
+    background-color: #a9a0a0;
+    transform: scale(1.05);
+}
+
+/* Specific button styles */
+.sign-in-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.sign-in-btn:hover {
+    background-color: #0056b3;
+}
+
+.sign-out-btn {
+    background-color: #e63946;
+    color: white;
+}
+
+.sign-out-btn:hover {
+    background-color: #d62839;
+}
+
+/* Additional links styling */
+.login-links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login-links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}

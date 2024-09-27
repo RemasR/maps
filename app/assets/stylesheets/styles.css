@@ -142,3 +142,35 @@ a:hover {
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+#fname {
+    width: 80%;
+    max-width: 500px;
+    padding: 12px 20px;
+    margin: 20px auto;
+    display: block;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #FAFBFC;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#fname:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+#locationsForm {
+    text-align: center;
+    margin: 20px 0;
+}
+.button {
+    margin-top: 10px;
+}
+
+#locationList {
+    padding: 0;
+    margin: 20px 0;
+    list-style-type: none;
+}

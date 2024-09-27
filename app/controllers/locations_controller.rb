@@ -33,7 +33,7 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
     if @location.save
-      redirect_to root_path, notice: 'Location was successfully created.'
+      redirect_to root_path
     else
       render :new
     end

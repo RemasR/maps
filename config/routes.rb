@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-
+  root to: "locations#index"
   # Root path for non-authenticated users
-  root to: "home#index"
+  # root to: "locations#index"
+
 
   # Routes for locations
   resources :locations, only: [:index, :new, :create, :edit, :update, :show, :destroy] do

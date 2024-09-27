@@ -17,24 +17,61 @@
     <%= form_with url: locations_action_locations_path, method: :post, local: true, id: 'locationsForm' do %>
       <ul id="locationList">
         <% @locations.each do |location| %>
-          <li>
+          <li id="<%= location.id %>">
             <input type="checkbox" name="location_ids[]" value="<%= location.id %>">
             <strong><%= location.name %></strong>
-            <a href="<%= location.address %>"><%= location.address %></a>
+            <a href="<%=location.url%>"><%= location.address %></a>
           </li>
         <% end %>
       </ul>
       <input type="hidden" name="action_type" id="actionType" value="">
+
+      <input type="text" id="fname" name="fname" oninput="search_elements(this.value);"><br><br>
+
       <button type="button" class="button" onclick="handleAction('edit')">Edit Selected</button>
       <button type="button" class="button" onclick="handleAction('delete')">Delete Selected</button>
+      <% if user_signed_in? %>
+        <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "button" %>
+      <% else %>
+        <%= button_to "Sign in", new_user_session_path, class: "button"  %>
+      <% end %>
     <% end %>
   </div>
 </div>
 <script>
+  const locations = <%= @locations.to_json.html_safe %>
     function toggleContent() {
         const content = document.getElementById('toggleContent');
         content.style.display = content.style.display === 'none' ? 'block' : 'none';
     }
+
+   function search_elements(prompt){
+       console.log(prompt)
+       var ids_to_keep = search(locations,prompt)
+
+       const list = document.getElementById("locationList").children;
+       for(var i=0;i<list.length; i+=1)
+       {
+          if(ids_to_keep.includes(list[i].id)){
+              list[i].style.display ="";
+          }
+        else list[i].style.display = "none";
+       }
+   }
+
+    function search(locations, prompt) {
+        results = []
+        locations.forEach((location) => {
+            if (!prompt  || location.name.toLowerCase().includes(prompt.toLowerCase()) ||
+                location.address.toLowerCase().includes(prompt.toLowerCase())
+            )
+            {
+                results.push(location.id.toString());
+            }
+        })
+      return results
+    }
+
 
     function handleAction(action) {
         const form = document.getElementById('locationsForm');

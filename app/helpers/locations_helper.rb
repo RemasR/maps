@@ -13,7 +13,8 @@ module LocationsHelper
 
   def self.getInfo(url)
     lat = getLatLong(url)
-    url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+'&key=AIzaSyDNvjCDwn1Xzd6Mqx7vcVVs23BdEILBDcQ'
+    api_key = ENV['GOOGLE_MAPS_API_KEY']
+    url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=#{lat}&key=#{api_key}"
     response = HTTParty.get(url)
     info = JSON.parse(response.body)
 
@@ -21,6 +22,6 @@ module LocationsHelper
     arr = longName.reverse.map do |info|
       info["long_name"]
     end
-    return arr.join(', ')
+    return arr.join(', ') 
   end
 end

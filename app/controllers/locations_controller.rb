@@ -29,10 +29,9 @@ class LocationsController < ApplicationController
     render info
   end
 
+
   def create
     @location = Location.new(location_params)
-    
-    @location.user = current_user if current_user.present?
     if @location.save
       redirect_to root_path, notice: 'Location was successfully created.'
     else

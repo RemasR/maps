@@ -20,7 +20,6 @@
           <li>
             <input type="checkbox" name="location_ids[]" value="<%= location.id %>">
             <strong><%= location.name %></strong>
-            <strong><%= location&.user&.email%></strong>
             <a href="<%= location.address %>"><%= location.address %></a>
           </li>
         <% end %>
